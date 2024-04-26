@@ -1,0 +1,1 @@
+avr-gcc -mmcu=atmega328p -Os ./src/main_emax.c ./libs/timer.c ./libs/gpio.c ./libs/uart.c ./libs/cossenos.c ./libs/circular_buffer.c -o ./bin/main_emax.bin && avr-objcopy -j .text -j .data -O ihex ./bin/main_emax.bin ./hex/main_emax.hex && avrdude -b 115200 -c arduino -P /dev/ttyUSB0 -p atmega328p -v -v -D -U flash:w:./hex/main_emax.hex:i && python3 ../scripts/logger_emax.py
